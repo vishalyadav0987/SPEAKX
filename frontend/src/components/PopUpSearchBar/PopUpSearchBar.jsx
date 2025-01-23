@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { FiSearch } from "react-icons/fi";
 import { RxCountdownTimer } from "react-icons/rx";
 import { BsFillQuestionSquareFill } from "react-icons/bs"; // Anagram
-import './PopUpSearchBar.css'
+import axios from 'axios';
+import { useQuestionContext } from '../../QuestionContext/QuestionContext';
+import './PopUpSearchBar.css';
 
 const questionType = [
     "Anagrams",
@@ -21,28 +23,36 @@ const searchHistory = [
     "the example",
 ];
 
-const accordingToQuerySearch = [
-    { title: "What is capital of INDIA?", type: "General Knowledge" },
-    { title: "Who is the president of USA?", type: "General Knowledge" },
-    { title: "Rearrange the words to form a sentence", type: "Anagram" },
-    { title: "In my previous role as a lawyer, I _______ engaged with clients, meticulously prepared legal documents, and confidently represented them in various court proceedings?", type: "MCQ" },
-    { title: "Since we haven't met before, I'd love to learn more about your role here?", type: "READ_ALONG" },
-    { title: "What is capital of INDIA?", type: "General Knowledge" },
-    { title: "Who is the president of USA?", type: "General Knowledge" },
-    { title: "Rearrange the words to form a sentence", type: "Anagram" },
-    { title: "In my previous role as a lawyer, I _______ engaged with clients, meticulously prepared legal documents, and confidently represented them in various court proceedings?", type: "MCQ" },
-    { title: "Since we haven't met before, I'd love to learn more about your role here?", type: "READ_ALONG" },
-];
-
-const PopUpSearchBar = ({setPopSearchBarOpen,}) => {
+const PopUpSearchBar = ({ setPopSearchBarOpen }) => {
     const [searchQuery, setSearchQuery] = useState("");
-    
+    const { queryBasedQuestion, setQueryBasedQuestion } = useQuestionContext();
+
+    useEffect(() => {
+        const searchOnQueryHandler = async () => {
+            if (!searchQuery) return; // Don't search if the query is empty
+            try {
+                const response = await axios.get(`http://localhost:3000/api/v1/find?title=${searchQuery}`);
+                if (!response.data.success) {
+                    console.log("No data found");
+                    setQueryBasedQuestion([]);
+                    return;
+                }
+                const data = response.data;
+                setQueryBasedQuestion(data.questions);
+                console.log(data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        searchOnQueryHandler();
+    }, [searchQuery, setQueryBasedQuestion]);
 
     return (
         <>
-        <div className="overlay" onClick={()=>{setPopSearchBarOpen(false)}}></div>
+            <div className="overlay" onClick={() => { setPopSearchBarOpen(false); }}></div>
             <div className="pop-serach-bar-container">
-                <div className="pop-search-bar-content" >
+                <div className="pop-search-bar-content">
                     <div className="pop-search-box">
                         <button><FiSearch /></button>
                         <input
@@ -62,11 +72,8 @@ const PopUpSearchBar = ({setPopSearchBarOpen,}) => {
                             </div>
                         </div>
                         <div className="search-history-box">
-                            <div
-                                className='search-history-box-heading'>
-                                {
-                                    searchQuery.length > 0 ? ("Search Results") : ("Search history")
-                                }
+                            <div className='search-history-box-heading'>
+                                {searchQuery.length > 0 ? "Search Results" : "Search History"}
                             </div>
                             {
                                 searchQuery.length === 0 ? (
@@ -74,53 +81,38 @@ const PopUpSearchBar = ({setPopSearchBarOpen,}) => {
                                         {searchHistory.map((history, index) => (
                                             <div key={index}>
                                                 <RxCountdownTimer />
-                                                <li >{history}</li>
+                                                <li>{history}</li>
                                             </div>
                                         ))}
                                     </div>
                                 ) : (
                                     <div className="search-on-query-question-list">
-                                        {accordingToQuerySearch.length > 0 && (
-                                            <div
-                                                className="search-on-query-list-item"
-                                            >
-                                                {
-                                                    accordingToQuerySearch.map(
-                                                        (question, index) => (
-                                                            <div
-                                                                className='single-search-question'
-                                                                key={index}
-                                                            >
-                                                                <div
-                                                                    className="question-icon"
-                                                                >
-                                                                    <BsFillQuestionSquareFill />
-                                                                </div>
-                                                                <div
-                                                                    className="question-details"
-                                                                >
-                                                                    <div>
-                                                                        {question?.title}
-                                                                    </div>
-                                                                    <div>
-                                                                        {question?.type}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        ))}
+                                        {queryBasedQuestion?.length > 0 ? (
+                                            <div className="search-on-query-list-item">
+                                                {queryBasedQuestion.map((question, index) => (
+                                                    <div className='single-search-question' key={index}>
+                                                        <div className="question-icon">
+                                                            <BsFillQuestionSquareFill />
+                                                        </div>
+                                                        <div className="question-details">
+                                                            <div>{question?.title}</div>
+                                                            <div>{question?.type}</div>
+                                                        </div>
+                                                    </div>
+                                                ))}
                                             </div>
+                                        ) : (
+                                            <div>No results found for your search.</div>
                                         )}
                                     </div>
                                 )
                             }
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
-export default PopUpSearchBar
+export default PopUpSearchBar;
