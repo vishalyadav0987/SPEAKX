@@ -1,0 +1,47 @@
+.button-scroll-container {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    gap: 10px;
+    width: 50%;
+  }
+  
+  .scroll-arrow {
+    background-color: transparent;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    color:  rgb(0, 0, 0,0.4);
+  }
+  
+  .button-wrapper {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+    scroll-behavior: smooth;
+    flex: 1;
+    padding: 10px;
+
+  }
+  
+  .button-wrapper::-webkit-scrollbar {
+    display: none; 
+  }
+  
+  .scrollable-button {
+    border: 1px solid rgb(0, 0, 0,0.4);
+    background-color: transparent;
+    border-radius: 16px;
+    padding: 8px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .scrollable-button:hover {
+    background-color: #f0f0f0;
+  }
+  
