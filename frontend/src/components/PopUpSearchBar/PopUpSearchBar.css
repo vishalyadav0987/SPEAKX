@@ -6,6 +6,11 @@
     height: 100vh;
 }
 
+.highlight{
+    color: #ff0000;
+    font-weight: 500;
+}
+
 .overlay{
   position: absolute;
   width: 100vw;

@@ -48,6 +48,18 @@ const PopUpSearchBar = ({ setPopSearchBarOpen }) => {
         searchOnQueryHandler();
     }, [searchQuery, setQueryBasedQuestion]);
 
+    const highlightedText = (text) => {
+        if(!searchQuery) return text;
+        const querySearparts = text.split(new RegExp(`(${searchQuery})`, 'gi')); 
+         // return array of word that will write in query
+        return querySearparts.map((part, index) =>
+            part.toLowerCase() === searchQuery.toLowerCase() ? (
+                <span key={index} className="highlight">{part}</span> 
+            ) : (
+                part 
+            )
+        );
+    }
     return (
         <>
             <div className="overlay" onClick={() => { setPopSearchBarOpen(false); }}></div>
@@ -95,7 +107,10 @@ const PopUpSearchBar = ({ setPopSearchBarOpen }) => {
                                                             <BsFillQuestionSquareFill />
                                                         </div>
                                                         <div className="question-details">
-                                                            <div>{question?.title}</div>
+                                                            <div>{
+                                                                highlightedText(question?.title)
+                                                                }
+                                                                </div>
                                                             <div>{question?.type}</div>
                                                         </div>
                                                     </div>
