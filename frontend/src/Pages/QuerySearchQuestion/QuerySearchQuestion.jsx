@@ -58,6 +58,21 @@ const QuerySearchQuestion = () => {
 
     return (
         <>
+        <div className="result-count" style={{
+            display:"flex",
+            alignItems:"center",
+            padding:"2px 20px",
+            fontSize:"14px",
+            color:"#333"
+        }}>
+            <p>
+            {(20 * (+currentPage-1)) + 0+1} - {(20 * (+currentPage-1)) + 20}  of over {20*totalPages} question for {" "}<span style={{
+                fontWeight:"600",
+                fontFamily:"sans-serif",
+                color:"#0058ca"
+            }}>"{searchQuery}"</span>
+            </p>
+        </div>
             <div className="query-question-container">
                 <div className="question-lists" ref={questionTypeRef}>
                     {
