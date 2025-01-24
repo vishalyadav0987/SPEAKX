@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const AnotherQuestionSchema = new mongoose.Schema({
   text: {
     type: String,
-    required: true
   },
   showInOption: {
     type: Boolean
@@ -17,7 +16,6 @@ const AnotherQuestionSchema = new mongoose.Schema({
 const McqQuestionSchema = new mongoose.Schema({
   text: {
     type: String,
-    required: true
   },
   isCorrectAnswer: {
     type: Boolean
@@ -25,13 +23,17 @@ const McqQuestionSchema = new mongoose.Schema({
 });
 
 const QuestionSchema = new mongoose.Schema({
+  _id:{
+    
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
+    
+  },
   type: {
     type: String,
-    required: true
   },
   anagramType: {
     type: String,
-    required: true
   },
   blocks: {
     type: [AnotherQuestionSchema],
@@ -43,14 +45,14 @@ const QuestionSchema = new mongoose.Schema({
   },
   siblingId: {
     type: mongoose.Schema.Types.ObjectId,
+    ref: 'Question', 
+    default: null,
   },
   solution: {
     type: String,
-    required: true
   },
   title: {
     type: String,
-    required: true
   },
 });
 
