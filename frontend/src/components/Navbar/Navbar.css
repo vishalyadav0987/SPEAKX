@@ -24,7 +24,7 @@
 
 .nav ul li a:hover{
     cursor: pointer;
-    color: #dc6f18;
+    color: #007dc5;
 }
 
 .nav ul a{
@@ -50,7 +50,7 @@
 .header-button button{
     padding: 10px 20px;
     border-radius: 20px;
-    background-color: #dc6f18;
+    background-color: #0058ca;
     color: white;
     border: none;
     cursor: pointer;
@@ -58,5 +58,5 @@
 }
 
 .header-button button:nth-child(2):hover{
-    background-color: #dc6f18e6;
+    background-color: #007dc5;
 }
