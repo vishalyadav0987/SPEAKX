@@ -70,7 +70,7 @@ const QuerySearchQuestion = () => {
                 fontWeight:"600",
                 fontFamily:"sans-serif",
                 color:"#0058ca"
-            }}>"{searchQuery}"</span>
+            }}>"{searchQuery?.length > 30 ? searchQuery?.slice(0,30) + "..." : searchQuery}"</span>
             </p>
         </div>
             <div className="query-question-container">
