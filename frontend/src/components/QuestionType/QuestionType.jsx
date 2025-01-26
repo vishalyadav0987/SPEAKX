@@ -2,8 +2,9 @@ import React, { useRef } from "react";
 import "./QuestionType.css";
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
+import Spinner from "../Spinner/Spinner";
 
-const QuestionType = () => {
+const QuestionType = ({ questionType, loading }) => {
   const scrollContainerRef = useRef(null);
 
   const scrollLeft = () => {
@@ -20,20 +21,34 @@ const QuestionType = () => {
     });
   };
 
+  const capitalize = (str) => {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  };
+
   return (
     <div className="button-scroll-container">
       <button className="scroll-arrow" onClick={scrollLeft}>
-      <FaAngleLeft />
+        <FaAngleLeft />
       </button>
       <div className="button-wrapper" ref={scrollContainerRef}>
-        {["Button 1", "Button 2", "Button 3", "Button 4", "Button 5", "Button 6", "Button 7", "Button 8", "Button 9", "Button 10"].map((name, index) => (
-          <button key={index} className="scrollable-button">
-            {name}
-          </button>
-        ))}
+        {
+          loading ? (
+           <div style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"center"}}>
+             <Spinner second={"4vh"} w={"20"}></Spinner>
+            </div>
+          ) :
+
+            (questionType &&
+              questionType.length > 0 &&
+              questionType?.map((type, index) => (
+                <div className="scrollable-button" key={index}>{capitalize(type)}</div>
+              )))
+
+        }
       </div>
       <button className="scroll-arrow" onClick={scrollRight}>
-      <FaAngleRight />
+        <FaAngleRight />
       </button>
     </div>
   );
