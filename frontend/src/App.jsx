@@ -1,15 +1,20 @@
 import React from 'react'
 import Navbar from './components/Navbar/Navbar'
+import {Routes,Route} from 'react-router-dom'
 import './App.css'
-import SearchBox from './components/SearchBox/SearchBox'
-import PopUpSearchBar from './components/PopUpSearchBar/PopUpSearchBar'
+import Home from './Pages/Home/Home'
+import QuerySearchQuestion from './Pages/QuerySearchQuestion/QuerySearchQuestion'
 
 const App = () => {
   return (
-    <div>
+    <div >
       <Navbar/>
-      <SearchBox/>
-      {/* <PopUpSearchBar/> */}
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        {/* Search query Page */}
+        <Route path="/search" element={<QuerySearchQuestion />} />
+        {/* Question Page */}
+      </Routes>
     </div>
   )
 }
