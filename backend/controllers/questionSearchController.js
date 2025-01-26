@@ -22,7 +22,7 @@ const searchQuestion = async (req, res) => {
             { $sort: { startsWithQuery: 1, title: 1 } },
             { $skip: (page - 1) * limit },
             { $limit: Number(limit) }
-        ]);
+        ]).allowDiskUse(true);
 
         const totalItems = await QuestionSchema.countDocuments({ title: { $regex: regex } });
 
