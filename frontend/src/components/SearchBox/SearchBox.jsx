@@ -29,7 +29,7 @@ const SearchBox = () => {
   const {typeOfQuestion} = useQuestionContext();
 
 
-     // fetching question type
+    //  fetching question type
      const {loading} = useFetchQuestionType();
      const questionType = typeOfQuestion && typeOfQuestion
   
@@ -46,6 +46,7 @@ const SearchBox = () => {
               <FiSearch />
             </button>
           </div>
+          {/* <QuestionType /> */}
           <QuestionType questionType={questionType} loading = {loading}/>
           <p className='tag-question'>Popular Questions type</p>
         </div>
