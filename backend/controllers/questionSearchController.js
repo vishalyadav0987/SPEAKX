@@ -8,18 +8,18 @@ const searchQuestion = async (req, res) => {
 
         const questions = await QuestionSchema.aggregate([
             { $match: { title: { $regex: regex } } },
-            {
-                $addFields: {
-                    startsWithQuery: {
-                        $cond: [
-                            { $regexMatch: { input: "$title", regex: `^${title}`, options: "i" } },
-                            1, 
-                            2  
-                        ]
-                    }
-                }
-            },
-            { $sort: { startsWithQuery: 1, title: 1 } },
+            // {
+            //     $addFields: {
+            //         startsWithQuery: {
+            //             $cond: [
+            //                 { $regexMatch: { input: "$title", regex: `^${title}`, options: "i" } },
+            //                 1, 
+            //                 2  
+            //             ]
+            //         }
+            //     }
+            // },
+            // { $sort: { startsWithQuery: 1, title: 1 } },
             { $skip: (page - 1) * limit },
             { $limit: Number(limit) }
         ]).allowDiskUse(true);
