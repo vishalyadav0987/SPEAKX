@@ -38,6 +38,7 @@
 }
 .search-box-content input:focus{
     background-color: #e0e0e0;
+    border: 1px solid #e0e0e0;
 
 }
 .search-box-content input::placeholder{
@@ -81,3 +82,29 @@
     top: 0;
     z-index: 100;
 }
+
+
+/********************************/
+/*      Responsive css          */
+/********************************/
+
+@media (max-width:750px) {
+    .search-box-content{
+    width: 100%;
+    }
+    .search-box-content input{
+        padding: 8px 20px;
+    }
+    .search-box{
+        width: 90%;
+        height: 90%;
+    }
+    .search-box-content button{
+        width: 56px;
+        height: 56px;
+        right: 0;
+    }
+    .search-box-container{
+        height: 100vh;
+    }
+  }
