@@ -5,6 +5,7 @@ require('dotenv').config();
 const port = 5000 || process.env.PORT;
 const cors = require('cors');
 const QuestionRoute = require('./routes/QuestionRoute')
+const path = require("path");
 
 
 app.use(cors());
