@@ -9,7 +9,7 @@ const useFetchQuestionType = () => {
     useEffect(() => {
         const fetchQestionType = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/v1/questions/find?limit=${100000}`);
+                const response = await axios.get(`/api/v1/questions/find?limit=${100000}`);
                 if (!response.data.success) {
                     console.log("No data found");
                     setTypeOfQuestion([]);

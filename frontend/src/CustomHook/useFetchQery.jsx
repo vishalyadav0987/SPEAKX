@@ -10,7 +10,7 @@ const useFetchQery = (searchQuery,page) => {
         const searchOnQueryHandler = async () => {
             if (!searchQuery) return; // Dont search if the query is empty
             try {
-                const link = page > 0 ? `http://localhost:3000/api/v1/questions/find?title=${searchQuery}&page=${page}`: `http://localhost:3000/api/v1/questions/find?title=${searchQuery}`
+                const link = page > 0 ? `/api/v1/questions/find?title=${searchQuery}&page=${page}`: `/api/v1/questions/find?title=${searchQuery}`
                 const response = await axios.get(link);
                 if (!response.data.success) {
                     console.log("No data found");
