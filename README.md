@@ -1,5 +1,39 @@
 # SPEAKX - Question Search
 
+## Home Page
+<img src="./readmeAssets/home.png" />
+
+---
+
+## Pop Search Bar + History
+<img src="./readmeAssets/popUpSearch.png" />
+
+---
+
+## Search Suggestion
+<img src="./readmeAssets/searchSuggestion.png" />
+
+---
+
+
+## Pagination + Question Page
+<img src="./readmeAssets/pagination.png" />
+
+---
+
+<div style="width:100%; display:flex; align-item:center;" >
+<div style="display:grid; grid-template-columns:repeat(2,200px); gap:40px; margin:0 auto;">
+
+## Responsive UI
+
+<img src="./readmeAssets/responsive nav.png"/>
+<img src="./readmeAssets/responsivePopSearch.png"/>
+<img src="./readmeAssets/responsiveSuggestion.png"/>
+<img src="./readmeAssets/responsiveResult.png"/>
+
+</div>
+</div>
+
 The **SPEAKX - Question Search** application is a MERN stack project that enables users to search for questions efficiently. The application incorporates advanced search capabilities, pagination, search history, and data compression for optimized storage and retrieval. It is designed for performance, scalability, and ease of use.
 
 ---
