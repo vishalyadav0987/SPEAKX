@@ -32,7 +32,6 @@
 
 
 
-----
 
 The **SPEAKX - Question Search** application is a MERN stack project that enables users to search for questions efficiently. The application incorporates advanced search capabilities, pagination, search history, and data compression for optimized storage and retrieval. It is designed for performance, scalability, and ease of use.
 
