@@ -173,7 +173,8 @@ Create a `.env` file in the backend directory and add the following:
 
 Experience the **SPEAKX - Question Search** live in action! Explore the question search features and try out the functionality for yourself:
 
-[**Click here to access the live application**](https://speakx-7eos.onrender.com/) 
+[**Click here to access the live application**](https://speakx-7eos.onrender.com/)  
+**NOTE:** I'm experiencing performance issues with the hosted version because my `dataset` has `100,000` records. Replacing the `aggregate` function with a `find query` has slowed down the process. `But if you going with my code it not any issue.`
 
 Feel free to explore and see how the app works in real-time!
 
