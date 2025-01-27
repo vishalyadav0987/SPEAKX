@@ -23,16 +23,14 @@
 
 ## Responsive UI
 
-<div style="width:100%; display:flex; align-item:center;" >
-<div style="display:grid; grid-template-columns:repeat(2,200px); gap:40px; margin:0 auto;">
-
-<img src="./readmeAssets/responsive nav.png"/>
-<img src="./readmeAssets/responsivePopSearch.png"/>
-<img src="./readmeAssets/responsiveSuggestion.png"/>
-<img src="./readmeAssets/responsiveResult.png"/>
-
+<div style="display:flex; justify-content:center; align-items:center; gap:30px;">
+  <img style="width:200px" src="./readmeAssets/responsive nav.png" />
+  <img style="width:200px" src="./readmeAssets/responsivePopSearch.png" />
+  <img style="width:200px" src="./readmeAssets/responsiveSuggestion.png" />
+  <img style="width:200px" src="./readmeAssets/responsiveResult.png" />
 </div>
-</div>
+
+
 
 ----
 
